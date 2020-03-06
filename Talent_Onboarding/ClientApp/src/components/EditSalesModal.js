@@ -31,6 +31,9 @@ class EditSalesModal extends React.Component{
       handleOpen = (e) => this.setState({ modalOpen: true})
       handleClose = () => this.setState({ modalOpen: false })
       changeHandler=(e)=>{this.setState({[e.target.name]:e.target.value})}
+      changeCustomerHandler=(e,value)=>{this.setState({customerId:value})}
+      changeProductHandler=(e,value)=>{this.setState({productId:value})}
+      changeStoresHandler=(e,value)=>{this.setState({storeId:value})}
       snackbarClose=(e)=>{this.setState({snackbarOpen:false})}
       handleSubmit=(e)=>{
           e.preventDefault();
@@ -45,9 +48,9 @@ class EditSalesModal extends React.Component{
               body:JSON.stringify({
                   id:e.target.id.value,
                   dateSold:e.target.dateSold.value,
-                  customerName:e.target.customerName.value,
-                  productName:e.target.productName.value,
-                  storeName:e.target.storeName.value
+                  customerId:e.target.customerId.value,
+                  productId:e.target.productId.value,
+                  storeId:e.target.storeId.value
               })
           }
         )
@@ -81,19 +84,19 @@ class EditSalesModal extends React.Component{
                         <Input name="dateSold" placeholder='yyyy-mm-dd' value={this.state.date} defaultValue={this.props.saledate} onChange={this.changeHandler}/>
                       </Form.Field>
                     
-                      <Form.Field name="customerName" label='Customers' control='select' defaultValue={this.props.salecust} onChange={this.changeHandler}>
+                      <Form.Field name="customerId" label='Customers' control='select' defaultValue={this.props.salecust}>
                       {this.state.custs.map(cust=>
-                        <option key={cust.id}>{cust.name}</option>)}
+                        <option key={cust.id} value={cust.id}>{cust.name}</option>)}
                       </Form.Field>
 
-                      <Form.Field name="productName" label='Products' control='select' defaultValue={this.props.saleprod} onChange={this.changeHandler}>
+                      <Form.Field name="productId" label='Products' control='select' defaultValue={this.props.saleprod}>
                       {this.state.prodts.map(prod=>
-                        <option key={prod.id}>{prod.name}</option>)}
+                        <option key={prod.id} value={prod.id}>{prod.name}</option>)}
                       </Form.Field>
                     
-                      <Form.Field name="storeName" label='Stores' control='select' defaultValue={this.props.salestore} onChange={this.changeHandler}>
+                      <Form.Field name="storeId" label='Stores' control='select' defaultValue={this.props.salestore}>
                       {this.state.stores.map(store=>
-                        <option key={store.id}>{store.name}</option>)}
+                        <option key={store.id} value={store.id}>{store.name}</option>)}
                       </Form.Field>
                         <Modal.Actions align='right'>
                         <Button color='black' content='cancel' onClick={this.handleClose}/>

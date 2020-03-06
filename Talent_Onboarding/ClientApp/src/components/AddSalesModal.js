@@ -84,7 +84,7 @@ class AddSalesModal extends React.Component{
                       <Form.Field name="storeId" label='Stores' control='select'>
                       <option></option>
                       {this.state.stores.map(store=>
-                      <option key={store.id} value={store.id}>{store.name}</option>)}
+                        <option key={store.id} value={store.id}>{store.name}</option>)}
                       </Form.Field>
                     <Modal.Actions align='right'>
                     <Button color='black' content='cancel' onClick={this.handleClose}/>

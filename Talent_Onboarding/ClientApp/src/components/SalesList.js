@@ -67,7 +67,7 @@ class SalesList extends React.Component
                   <Table.Cell>{sale.productName}</Table.Cell>
                   <Table.Cell>{sale.storeName}</Table.Cell>
                   <Table.Cell>{sale.dateSold}</Table.Cell>
-                  <Table.Cell><EditSalesModal saleid={sale.id} saledate={sale.dateSold} salecust={sale.customerName} saleprod={sale.productName} salestore={sale.storeName}/></Table.Cell>
+                  <Table.Cell><EditSalesModal saleid={sale.id} saledate={sale.dateSold} salecust={sale.customerId} saleprod={sale.productId} salestore={sale.storeId}/></Table.Cell>
                   <Table.Cell><DeleteSalesModal saleid={sale.id} /></Table.Cell>
                 </Table.Row>
                   )
