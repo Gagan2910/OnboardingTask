@@ -55,12 +55,9 @@ class EditSalesModal extends React.Component{
           }
         )
       .then(response=>response.text())
-      .then(response=>{this.setState(console.log(response))},
-      //{snackbarOpen:true,snackbarMsg:"Data edited successfully"}
-        error=>{this.setState(console.log(error))})
-        //{snackbarOpen:true,snackbarMsg:"Failed to edit"}
+      .then(response=>{this.setState({snackbarOpen:true,snackbarMsg:"Data edited successfully"})},
+        error=>{this.setState({snackbarOpen:true,snackbarMsg:"Failed to edit"})})
       }
-
     render(){
           return(
                 <div>
