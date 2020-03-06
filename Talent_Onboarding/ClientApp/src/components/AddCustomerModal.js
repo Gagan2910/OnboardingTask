@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button,Icon,Modal } from 'semantic-ui-react'
+import { Button,Modal } from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
 import Snackbar from '@material-ui/core/Snackbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -18,7 +18,6 @@ class AddCustomerModal extends React.Component{
   handleSubmit = (event)=>{
       event.preventDefault();
       this.handleClose();
-    
       //fetch('https://localhost:44339/api/Customers', {
      fetch('https://onboardingproject.azurewebsites.net/api/customers',{
       method:'POST',
@@ -49,7 +48,7 @@ class AddCustomerModal extends React.Component{
                   <Modal.Header>Create Customer</Modal.Header>
                   <Modal.Content>
                     <Form onSubmit={this.handleSubmit}>
-                      <Form.Field required>
+                      <Form.Field>
                         <label>Name</label>
                         <Input  name="name" placeholder='Full name'/>
                       </Form.Field>
@@ -57,14 +56,11 @@ class AddCustomerModal extends React.Component{
                         <label>Address</label>
                         <Input name="address" placeholder='Address'/>
                       </Form.Field>
-                      <Modal.Actions>
-                        <Button secondary onClick={this.handleClose} inverted >
-                        cancel
-                        </Button>
-                        <Button type='submit' color='green' inverted>create
-                          <label><Icon name='checkmark' /></label>
-                        </Button>
+                      <Modal.Actions align='right'>
+                        <Button color='black' content='cancel' onClick={this.handleClose}/>
+                        <Button type='submit' color='green' content='create' icon='checkmark' labelPosition='right' />
                       </Modal.Actions>
+                     
                    </Form>
                   </Modal.Content>
                 </Modal>

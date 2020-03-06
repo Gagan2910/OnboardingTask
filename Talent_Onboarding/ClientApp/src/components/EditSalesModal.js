@@ -45,15 +45,17 @@ class EditSalesModal extends React.Component{
               body:JSON.stringify({
                   id:e.target.id.value,
                   dateSold:e.target.dateSold.value,
-                  customerId:e.target.customerId.value,
-                  productId:e.target.productId.value,
-                  storeId:e.target.storeId.value
+                  customerName:e.target.customerName.value,
+                  productName:e.target.productName.value,
+                  storeName:e.target.storeName.value
               })
           }
         )
       .then(response=>response.text())
-      .then(response=>{this.setState({snackbarOpen:true,snackbarMsg:"Data edited successfully"})},
-        error=>{this.setState({snackbarOpen:true,snackbarMsg:"Failed to edit"})})
+      .then(response=>{this.setState(console.log(response))},
+      //{snackbarOpen:true,snackbarMsg:"Data edited successfully"}
+        error=>{this.setState(console.log(error))})
+        //{snackbarOpen:true,snackbarMsg:"Failed to edit"}
       }
 
     render(){
@@ -79,24 +81,23 @@ class EditSalesModal extends React.Component{
                         <Input name="dateSold" placeholder='yyyy-mm-dd' value={this.state.date} defaultValue={this.props.saledate} onChange={this.changeHandler}/>
                       </Form.Field>
                     
-                      <Form.Field name="customerId" label='Customers' control='select' defaultValue={this.props.salecust} >{this.state.custs.map(cust=>
-                        <option key={cust.id} value={cust.id}>{cust.name}</option>)}
+                      <Form.Field name="customerName" label='Customers' control='select' defaultValue={this.props.salecust} onChange={this.changeHandler}>
+                      {this.state.custs.map(cust=>
+                        <option key={cust.id}>{cust.name}</option>)}
                       </Form.Field>
 
-                      <Form.Field name="productId" label='Products' control='select' defaultValue={this.props.saleprod}>{this.state.prodts.map(prod=>
-                        <option key={prod.id} value={prod.id}>{prod.name}</option>)}
+                      <Form.Field name="productName" label='Products' control='select' defaultValue={this.props.saleprod} onChange={this.changeHandler}>
+                      {this.state.prodts.map(prod=>
+                        <option key={prod.id}>{prod.name}</option>)}
                       </Form.Field>
                     
-                      <Form.Field name="storeId" label='Stores' control='select' defaultValue={this.props.salestore}>{this.state.stores.map(store=>
-                        <option key={store.id} value={store.id}>{store.name}</option>)}
+                      <Form.Field name="storeName" label='Stores' control='select' defaultValue={this.props.salestore} onChange={this.changeHandler}>
+                      {this.state.stores.map(store=>
+                        <option key={store.id}>{store.name}</option>)}
                       </Form.Field>
-                        <Modal.Actions>
-                          <Button secondary onClick={this.handleClose} inverted >
-                          cancel
-                          </Button>
-                                  <Button type='submit' color='green' inverted>edit
-                          <label><Icon name='checkmark' /></label>
-                          </Button>
+                        <Modal.Actions align='right'>
+                        <Button color='black' content='cancel' onClick={this.handleClose}/>
+                        <Button type='submit' color='green' content='edit' icon='checkmark' labelPosition='right' />
                         </Modal.Actions>
                      </Form>
                     </Modal.Content>

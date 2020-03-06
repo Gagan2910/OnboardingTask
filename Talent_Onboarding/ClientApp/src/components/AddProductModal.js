@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button,Icon,Modal } from 'semantic-ui-react'
+import { Button,Modal } from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
 import Snackbar from '@material-ui/core/Snackbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -54,13 +54,9 @@ class AddProductModal extends React.Component{
                       <label>Price</label>
                       <Input name="price" placeholder='Price'/>
                     </Form.Field>
-                    <Modal.Actions>
-                      <Button secondary onClick={this.handleClose} inverted >
-                      cancel
-                      </Button>
-                      <Button type='submit' color='green' inverted>create
-                    <label><Icon name='checkmark'/></label>
-                      </Button>
+                    <Modal.Actions align='right'>
+                    <Button color='black' content='cancel' onClick={this.handleClose}/>
+                    <Button type='submit' color='green' content='create' icon='checkmark' labelPosition='right' />
                     </Modal.Actions>
                  </Form>
                 </Modal.Content>

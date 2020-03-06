@@ -65,13 +65,9 @@ class EditProductModal extends React.Component{
                           <label>Price</label>
                           <Input name="price" placeholder='Price' defaultValue={this.props.prodprice} onChange={this.changeHandler}/>
                         </Form.Field>
-                        <Modal.Actions>
-                          <Button secondary onClick={this.handleClose} inverted >
-                          cancel
-                          </Button>
-                                  <Button type='submit' color='green' inverted>edit
-                            <label><Icon name='checkmark' /></label>
-                          </Button>
+                        <Modal.Actions align='right'>
+                        <Button color='black' content='cancel' onClick={this.handleClose}/>
+                        <Button type='submit' color='green' content='edit' icon='checkmark' labelPosition='right' />
                         </Modal.Actions>
                      </Form>
                     </Modal.Content>

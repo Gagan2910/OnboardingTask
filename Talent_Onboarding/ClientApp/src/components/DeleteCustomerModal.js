@@ -59,13 +59,9 @@ class DeleteCustomerModal extends React.Component{
                         <Form.Field>
                           <label>Are you sure?</label>
                         </Form.Field>
-                        <Modal.Actions>
-                          <Button secondary onClick={this.handleClose} inverted >
-                          cancel
-                          </Button>
-                          <Button type='submit' color='red' inverted>delete
-                            <label><Icon name='cancel'/></label>
-                          </Button>
+                        <Modal.Actions align='right'>
+                        <Button color='black' content='cancel' onClick={this.handleClose}/>
+                        <Button type='submit' color='red' content='delete' icon='close' labelPosition='right' />
                         </Modal.Actions>
                      </Form>
                     </Modal.Content>

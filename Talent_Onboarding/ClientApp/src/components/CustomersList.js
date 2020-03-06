@@ -9,7 +9,6 @@ import DeleteCustomerModal from './DeleteCustomerModal'
 import IdComponent from './IdComponent'
 import { Icon } from 'semantic-ui-react'
 
-
 class CustomersList extends React.Component
 {
   constructor(props){
@@ -18,7 +17,6 @@ class CustomersList extends React.Component
     this.refreshList=this.refreshList.bind(this)
     this.btnClick=this.btnClick.bind(this)
     }
-   
   btnClick(e){
     const id=e.target.value
     this.setState({id})
@@ -26,6 +24,13 @@ class CustomersList extends React.Component
   }
   componentDidMount(){
     this.refreshList();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot){
+      if(this.state.id===prevState.id)
+      {
+        //data=>{ this.setState({custs:data});}
+        this.refreshList();
+      }
   }
   refreshList()
   {
@@ -35,9 +40,7 @@ class CustomersList extends React.Component
     .then (data=>{this.setState({custs:data});}
     )
   }
-  componentDidUpdate(){
-    this.refreshList();
-    }
+  
   onSort = (name) => {
         this.setState({ name})
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace Talent_Onboarding.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors()]
     public class SalesController : ControllerBase
     {
         private readonly ProjectTalentContext _context;
@@ -22,6 +24,7 @@ namespace Talent_Onboarding.Controllers
         }
 
         // GET: api/Sales
+        [EnableCors()]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SalesDTO>>> GetSales()
         {
@@ -44,6 +47,7 @@ namespace Talent_Onboarding.Controllers
         }
 
         // GET: api/Sales/5
+        [EnableCors(" ")]
         [HttpGet("{id}")]
         public async Task<ActionResult<SalesDTO>> GetSales(int id)
         {
@@ -75,6 +79,8 @@ namespace Talent_Onboarding.Controllers
         // PUT: api/Sales/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+
+        [EnableCors()]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSales(int id, Sales sales)
         {
@@ -104,6 +110,7 @@ namespace Talent_Onboarding.Controllers
         // POST: api/Sales
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [EnableCors()]
         [HttpPost]
         public async Task<ActionResult<SalesDTO>> PostSales(Sales sales)
         {
@@ -126,6 +133,7 @@ namespace Talent_Onboarding.Controllers
         }
 
         // DELETE: api/Sales/5
+        [EnableCors()]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Sales>> DeleteSales(int id)
         {
